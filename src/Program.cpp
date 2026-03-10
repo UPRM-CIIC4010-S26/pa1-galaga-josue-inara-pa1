@@ -38,6 +38,12 @@ void Program::Update() {
         Enemy::ManageEnemies(player->hitBox);
         StdEnemy::attackReset();
         ManageEnemyRespawns();
+
+            if (Enemy::score >= extraLives){
+            if (lives < 5) lives++; //if the player has less than 5 lives, it adds a life
+            extraLives += 1000; //the score keeps moving up even when the lives are full
+        }
+
         player->update();
 
         for (std::pair<std::pair<float, float>, Enemy*> p : Enemy::enemies) {
@@ -195,7 +201,9 @@ void Program::Reset() {
     count = 0;
     delay = 0;
     lives = 3;
+
     Enemy::score = 0; //changes the score back down to zero when it resets 
+    extraLives = 1000; //when it resets the extra lives stay at 1000 points
 
     //Re-add enemies for when you get to game over and hit enter, the enemies would appear again
     Enemy::enemies.push_back(std::pair<std::pair<float, float>, Enemy*> {
