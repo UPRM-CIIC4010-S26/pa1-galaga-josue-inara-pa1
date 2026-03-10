@@ -74,6 +74,7 @@ void Program::Update() {
 
 void Program::Draw() {
     background.Draw();
+    DrawText(TextFormat("Score: %d", Enemy::score), 10, 10, 24, WHITE); // added so that the score is displayed on the screen
     if (pauseFrames <= 0 && !gameOver) player->draw();
     for (Animation& a : Animation::animations) a.draw();
 
@@ -193,6 +194,7 @@ void Program::Reset() {
     count = 0;
     delay = 0;
     lives = 3;
+    Enemy::score = 0; //changes the score back down to zero when it resets 
 
     //Re-add enemies for when you get to game over and hit enter, the enemies would appear again
     Enemy::enemies.push_back(std::pair<std::pair<float, float>, Enemy*> {

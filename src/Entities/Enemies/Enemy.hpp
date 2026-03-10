@@ -19,6 +19,9 @@ class Enemy {
         std::pair<float, float> position;
         HitBox hitBox;
 
+        int pointValue = 0; //base point value of each enemy
+        inline static int score = 0;
+
         inline static float direction = 0.5;
         inline static int directionChange = 100;
         inline static std::vector<std::pair<std::pair<float, float>, Enemy*>> enemies;
@@ -61,6 +64,9 @@ class Enemy {
                         Animation::animations.push_back(
                             Animation(p.second->position.first, p.second->position.second, 155, 0, 33, 33, 30, 30, 4, ImageManager::SpriteSheet)
                         );
+
+                        Enemy::score += p.second->pointValue; //every time an enemy dies it'll add its point value to the score 
+
                         p.second = nullptr;
                     }
                 }
