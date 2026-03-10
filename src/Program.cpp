@@ -16,7 +16,7 @@ Program::Program() {
             new SpEnemy(600, 150)
         });
 
-    for (int i = 0; i < 30; i++) {
+    for (int i = 0; i < 30; i++) { //primer cambio Josue
         float x = 250 + 50 * (i % 10);
         float y = 200 + 50 * (i / 10);
 
@@ -55,10 +55,16 @@ void Program::Update() {
             }
         }
 
-        for (Projectile& p : Projectile::projectiles) { 
-            p.update(); 
-
+        for (int i = 0; i < Projectile::projectiles.size(); i++) { //loops through the proyectiles
+            Projectile& p = Projectile::projectiles[i];
+            p.update(); //p.ID != 0 verifica que el proyectile no sea del player pq el ID del player es 0
+            if (p.ID == 1 && HitBox::Collision(p.getHitBox(), player->hitBox)) { //here p.hitBox didnt work because hitBox is private and you cant access it directly, so you have to use the getHitBox() already established to access it (como un loophole)
+                PlayerReset();//HitBox::Collision llama la funcion collision dentro del class HitBox
+                break; // stop the loop since projectiles were cleared
+            }
         }
+
+
 
         if (lives <= 0 && pauseFrames <= 0) gameOver = true;
         Projectile::CleanProjectiles();

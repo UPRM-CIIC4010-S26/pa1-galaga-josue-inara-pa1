@@ -18,14 +18,14 @@ class Projectile {
         Projectile(float x, float y, int ID) {
             this->position.first = x;
             this->position.second = y;
-            this->hitBox = HitBox(x, y, 2, 5);
+            this->hitBox = HitBox(x, y, 10, 15); //hitboxes were too small so it didnt register the collision
             this->ID = ID;
         }
 
         Projectile(float x, float y, float angle, int ID) {
             this->position.first = x;
             this->position.second = y;
-            this->hitBox = HitBox(x, y, 2, 5);
+            this->hitBox = HitBox(x, y, 10, 15); //hitboxes were too small so it didnt register the collision
             this->angle = angle;
             this->ID = ID;
         }
