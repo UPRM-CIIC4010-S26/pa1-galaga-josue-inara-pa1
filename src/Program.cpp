@@ -159,6 +159,7 @@ void Program::KeyInputs() {
     if (!paused && !startup && IsKeyPressed('O')) gameOver = !gameOver;
     if (!gameOver && !paused && IsKeyPressed('I')) startup = !startup;
     if (IsKeyPressed('H')) HitBox::drawHitbox = !HitBox::drawHitbox;
+    if(IsKeyPressed('K')) Enemy::score += 500; // Added this so when everytime you press the letter K it adds 500 to the score total
     
     if (gameOver && IsKeyPressed(KEY_ENTER)) {
         gameOver = false;
@@ -207,7 +208,7 @@ void Program::Reset() {
             new SpEnemy(600, 150)
         });
 
-    for (int i = 0; i < 30; i++) { //primer cambio Josue
+    for (int i = 0; i < 30; i++) { 
         float x = 250 + 50 * (i % 10);
         float y = 200 + 50 * (i / 10);
 
