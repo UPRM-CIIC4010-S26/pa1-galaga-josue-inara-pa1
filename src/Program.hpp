@@ -36,7 +36,10 @@ class Program {
         void KeyInputs();
         void PlayerReset();
         void Reset();
+
         inline static int score = 0; //added score w/ inline static so there is one shared score value and that it can be accessed from other files
-          
+        
+        int extraLives = 1000; //added extra lives
+        
         ~Program() {}
 };
