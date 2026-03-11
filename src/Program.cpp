@@ -81,6 +81,7 @@ void Program::Update() {
 void Program::Draw() {
     background.Draw();
     DrawText(TextFormat("Score: %d", Enemy::score), 10, 10, 24, WHITE); // added so that the score is displayed on the screen
+    DrawText(TextFormat("High Score: %d", Enemy::highestScore), 10, 40, 24, WHITE);
     if (pauseFrames <= 0 && !gameOver) player->draw();
     for (Animation& a : Animation::animations) a.draw();
 
@@ -201,6 +202,10 @@ void Program::Reset() {
     count = 0;
     delay = 0;
     lives = 3;
+    if (Enemy::score > Enemy::highestScore) //Added so that the highscore stays saved after game over and new round starts
+    {
+        Enemy::highestScore = Enemy::score;
+    }
 
     Enemy::score = 0; //changes the score back down to zero when it resets 
     extraLives = 1000; //when it resets the extra lives stay at 1000 points

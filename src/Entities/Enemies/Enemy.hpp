@@ -21,6 +21,7 @@ class Enemy {
 
         int pointValue = 0; //base point value of each enemy
         inline static int score = 0;
+        inline static int highestScore = 0;
 
         inline static float direction = 0.5;
         inline static int directionChange = 100;
