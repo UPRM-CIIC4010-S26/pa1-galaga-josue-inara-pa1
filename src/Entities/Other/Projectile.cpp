@@ -2,7 +2,7 @@
 
 void Projectile::draw() {
     if (HitBox::drawHitbox) this->hitBox.draw();
-    DrawRectangleGradientV(this->position.first, this->position.second, 2, 5, (ID == 1) ? WHITE : YELLOW, (ID == 1) ? YELLOW : WHITE);
+    DrawRectangleGradientV(this->position.first, this->position.second, 2, 5, color, WHITE); //changed the hardcoded colors 
 }
 
 void Projectile::update() {

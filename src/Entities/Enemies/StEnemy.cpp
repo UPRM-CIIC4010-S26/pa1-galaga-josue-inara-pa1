@@ -31,7 +31,7 @@ void StEnemy::update(std::pair<float, float> pos, HitBox target) {
     }
     
     if (this->cooldown <= 0) {
-        Projectile::projectiles.push_back(Projectile(Projectile(position.first + + this->hitBox.box.width / 2, position.second, 1)));
+        Projectile::projectiles.push_back(Projectile(Projectile(position.first + + this->hitBox.box.width / 2, position.second, 1, ORANGE))); //changed proj. color to orange
         PlaySound(SoundManager::shoot);
         this->cooldown = GetRandomValue(120, 600);
     }

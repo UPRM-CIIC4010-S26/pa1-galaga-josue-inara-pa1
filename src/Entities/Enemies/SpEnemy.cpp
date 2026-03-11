@@ -81,9 +81,9 @@ void SpEnemy::attack(HitBox target) {
             this->hitBox.box.y = this->position.second;
         } else {
             if (!this->stop) {
-                Projectile::projectiles.push_back(Projectile(this->position.first + this->hitBox.box.width / 2, this->position.second, 1));
-                Projectile::projectiles.push_back(Projectile((this->position.first + this->hitBox.box.width / 2) + 5, this->position.second, 45, 1));
-                Projectile::projectiles.push_back(Projectile((this->position.first + this->hitBox.box.width / 2) - 5, this->position.second, 135, 1));
+                Projectile::projectiles.push_back(Projectile(this->position.first + this->hitBox.box.width / 2, this->position.second, 1, PINK));
+                Projectile::projectiles.push_back(Projectile((this->position.first + this->hitBox.box.width / 2) + 5, this->position.second, 45, 1, PINK)); //changed proj. color to pink
+                Projectile::projectiles.push_back(Projectile((this->position.first + this->hitBox.box.width / 2) - 5, this->position.second, 135, 1, PINK));
                 PlaySound(SoundManager::shoot);
                 this->delay = 30;
                 this->stop = true;

@@ -39,7 +39,7 @@ void DyEnemy::update(std::pair<float, float> pos, HitBox target) {
     this->hitBox.box.y = this->position.second;
 
     if (this->cooldown <= 0) {
-        Projectile::projectiles.push_back(Projectile(Projectile(position.first + 15, position.second, 1)));
+        Projectile::projectiles.push_back(Projectile(Projectile(position.first + 15, position.second, 1, GREEN))); //changed proj. color to green
         PlaySound(SoundManager::shoot);
         this->cooldown = GetRandomValue(90, 300);
     }
