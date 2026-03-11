@@ -3,7 +3,15 @@
 
 void DyEnemy::draw() {
     if (HitBox::drawHitbox) this->hitBox.draw();
-    DrawTexturePro(ImageManager::SpriteSheet, Rectangle{2, 128, 13, 14}, 
+
+        Rectangle texture; //checks the new texture and asigns one of the two rectangles as the texture
+    if (newTexture == 1) {
+        texture = Rectangle{2, 128, 13, 14}; //original texture
+    } else {
+        texture = Rectangle{2, 147, 13, 13}; //new texture
+    } 
+    
+    DrawTexturePro(ImageManager::SpriteSheet, texture, 
                 Rectangle{this->position.first + 15, this->position.second + 15, 30, 30}, 
                 Vector2{15, 15}, this->aimAngle, WHITE);
 }
