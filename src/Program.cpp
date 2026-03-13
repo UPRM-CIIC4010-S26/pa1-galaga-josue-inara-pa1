@@ -34,6 +34,33 @@ void Program::Update() {
     }
     pauseFrames = std::max(pauseFrames - 1, 0);
 
+    if (!musicStarted)
+    {
+        PlayMusicStream(SoundManager::music);
+        SetMusicVolume(SoundManager::music, 0.5f);
+        musicStarted = true;
+    }
+
+    UpdateMusicStream(SoundManager::music);
+
+    if (!IsMusicStreamPlaying(SoundManager::music))
+    {
+        PlayMusicStream(SoundManager::music);
+    }
+
+    if (lives >= 3)
+    {
+        SetMusicPitch(SoundManager::music, 1.0f);
+    }
+    else if (lives == 2)
+    {
+        SetMusicPitch(SoundManager::music, 1.3f);
+    }
+    else if (lives == 1)
+    {
+        SetMusicPitch(SoundManager::music, 1.6f);
+    }
+
     if (!startup && !paused && !gameOver && pauseFrames <= 0) {
         Enemy::ManageEnemies(player->hitBox);
         StdEnemy::attackReset();
